@@ -1,3 +1,40 @@
-/* TODO: Style the product card container */
+/* base card */
+.card {
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 16px;
+  margin: 12px 0;
+  display: grid;
+  gap: 8px;
+  background: #ffffff;
+}
 
-/* TODO: Add special styling for out-of-stock products */
+/* visually mark out-of-stock items */
+.outOfStock {
+  background: #f9fafb;
+  opacity: 0.7;
+  border-color: #e5e7eb;
+}
+
+.name {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.price {
+  color: #374151;
+}
+
+.badge {
+  font-size: 0.8rem;
+  padding: 2px 8px;
+  border-radius: 999px;
+  display: inline-block;
+  background: #10b981;
+  color: white;
+}
+
+.badgeGray {
+  background: #9ca3af;
+  color: white;
+}

@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import ProductList from "./components/ProductList";
+
+
 
 const initialProducts = [
   { id: 1, name: "Laptop",  price: 999.99, inStock: true },
@@ -10,7 +12,16 @@ const initialProducts = [
 
 const App = () => {
   const [products, setProducts] = useState(initialProducts);
-
+useEffect(() => {
+  const onMove = (e) => {
+    const x = e.clientX / window.innerWidth;
+    const y = e.clientY / window.innerHeight;
+    const angle = 120 + (x - y) * 60;
+    document.documentElement.style.setProperty("--angle", `${angle}deg`);
+  };
+  window.addEventListener("mousemove", onMove);
+  return () => window.removeEventListener("mousemove", onMove);
+}, []);
   // remove one product by id
   const handleRemove = (id) => {
     setProducts((prev) => prev.filter((p) => p.id !== id));
@@ -18,10 +29,13 @@ const App = () => {
 
   return (
     <div>
+      <div className="diagonal-bg" aria-hidden />
+
       <h1>Product Dashboard</h1>
       <ProductList products={products} onRemove={handleRemove} />
     </div>
   );
+  
 };
 
 export default App;

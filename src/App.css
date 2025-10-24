@@ -17,6 +17,35 @@
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  background: #0b0f14; /* fallback behind the glass */
+}
+
+/* gradient layer that sits behind your UI */
+.diagonal-bg {
+  position: fixed;
+  inset: 0;          /* top:0 right:0 bottom:0 left:0 */
+  z-index: -1;       /* behind everything */
+  pointer-events: none;
+
+  /* controlled by JS */
+  --angle: 135deg;
+  --c1: #00f5ff;
+  --c2: #a0ff5f;
+
+  background: linear-gradient(var(--angle), var(--c1), var(--c2));
+  transition: background 120ms ease;
+}
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(135deg, #00f5ff, #a0ff5f);
+  background-size: 400% 400%;
+  transition: background 0.2s ease;
+  overflow: hidden;
+}
 
 @keyframes logo-spin {
   from {

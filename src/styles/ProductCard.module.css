@@ -1,40 +1,97 @@
-/* base card */
+/* PATH: src/styles/ProductCard.module.css */
+
+/* glass card */
 .card {
-  border: 1px solid #e5e7eb;
-  border-radius: 12px;
+  position: relative;
   padding: 16px;
+  border-radius: 16px;
+  /* translucent glass */
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  outline: 1px solid rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+/* below is the text color */
+  color: #ffffff;
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
   margin: 12px 0;
-  display: grid;
-  gap: 8px;
-  background: #ffffff;
 }
 
-/* visually mark out-of-stock items */
-.outOfStock {
-  background: #f9fafb;
-  opacity: 0.7;
-  border-color: #e5e7eb;
+.card:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.10);
+  box-shadow:
+    0 16px 40px rgba(255, 255, 255, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
-.name {
-  font-size: 1rem;
-  font-weight: 600;
-}
-
-.price {
-  color: #374151;
-}
-
-.badge {
-  font-size: 0.8rem;
-  padding: 2px 8px;
+/* subtle neon accent bar */
+.card::after {
+  content: "";
+  position: absolute;
+  left: 16px;
+  bottom: 10px;
+  height: 4px;
+  width: 80px;
   border-radius: 999px;
-  display: inline-block;
-  background: #10b981;
-  color: white;
+  background: linear-gradient(90deg, #b7ff5a, #9bff3f, #dfff90);
+  opacity: 0.9;
+  filter: blur(0.2px);
 }
 
-.badgeGray {
-  background: #9ca3af;
-  color: white;
+/* out-of-stock look */
+.outOfStock {
+  opacity: 0.65;
+  filter: grayscale(0.25);
+  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* typography inside card */
+.card h3 {
+  margin: 0 0 6px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+.card p {
+  margin: 2px 0;
+  color: #d1d5db;
+}
+
+/* button styling (works with your plain <button>) */
+.card button {
+  margin-top: 10px;
+  padding: 8px 12px;
+  border: 0;
+  border-radius: 12px;
+  cursor: pointer;
+  color: #0b0f14;
+  background: linear-gradient(180deg, #c9ff72, #a6ff3a);
+  box-shadow:
+    0 6px 18px rgba(166, 255, 58, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  transition: transform 120ms ease, box-shadow 120ms ease, opacity 120ms ease;
+}
+
+.card button:hover {
+  transform: translateY(-1px);
+  box-shadow:
+    0 10px 22px rgba(166, 255, 58, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+.card button:active {
+  transform: translateY(0);
+  box-shadow:
+    0 6px 16px rgba(166, 255, 58, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+/* keep contrast for out-of-stock */
+.outOfStock button {
+  opacity: 0.9;
 }

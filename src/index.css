@@ -4,3 +4,25 @@ body {
   background-color: #f4f4f4;
   text-align: center;
 }
+/* fill the viewport */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  background: #3f3f3f; /* fallback */
+}
+
+/* fixed diagonal gradient controlled by a CSS variable */
+.diagonal-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;     /* sits behind your UI */
+  pointer-events: none;
+
+  /* defaults that JS will update */
+  --angle: 135deg;
+  --c1: #00f5ff;
+  --c2: #a0ff5f;
+
+  background: linear-gradient(var(--angle), var(--c1), var(--c2));
+  transition: background 120ms ease;
+}
